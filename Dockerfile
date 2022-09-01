@@ -15,4 +15,5 @@ RUN yum install httpd -y; yum clean all; systemctl enable httpd.service
 COPY timer /var/www/html/timer
 COPY conf/pritam-site.conf /etc/httpd/conf.d/pritam-site.conf
 EXPOSE 80 8080
-CMD["/usr/sbin/init"]
+ENTRYPOINT ["/usr/sbin/init"]
+CMD ["systemctl"]
