@@ -11,7 +11,7 @@ rm -f /lib/systemd/system/anaconda.target.wants/*;
 VOLUME [ "/sys/fs/cgroup" ]
 RUN yum -y install epel-release && yum clean all
 RUN yum -y install httpd mod_ssl lsof tree && yum clean all && systemctl enable httpd.service
-RUN yum install httpd -y; yum clean all; systemctl enable httpd.service
+RUN systemctl start httpd.service
 COPY timer /var/www/html/timer
 COPY conf/pritam-site.conf /etc/httpd/conf.d/pritam-site.conf
 EXPOSE 80 8080
